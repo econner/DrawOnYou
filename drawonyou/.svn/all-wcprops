@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/drawonyou/draw/!svn/ver/15/drawonyou
+END
+manage.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/drawonyou/draw/!svn/ver/2/drawonyou/manage.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/drawonyou/draw/!svn/ver/2/drawonyou/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/drawonyou/draw/!svn/ver/16/drawonyou/settings.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/drawonyou/draw/!svn/ver/16/drawonyou/urls.py
+END

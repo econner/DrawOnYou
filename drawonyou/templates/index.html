@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% load draw_tags %}
+	{% if not user.uid %}
+		<div id="welcome">
+		<div style="text-align: center">
+		<script type="text/javascript">
+		FB.Event.subscribe('auth.login', function(response) {
+			// Reload the application in the logged-in state
+			window.top.location.href = '{{ facebook_canvas_url }}?fs_{{ facebook_api_key }}=' + encodeURIComponent($.param(response.session));
+		});
+		</script>
+		{% facebook_button %}
+		</div>
+		
+		<p>Check out some example photos:</p> 
+		<p><img src="http://lokho.com/drawonyou/images/TEMP-Image_2_26.jpg" /></p> 
+		<p><img src="http://lokho.com/drawonyou/images/n1055280012_30115189_6054.jpg" /><br />Photo courtesy of CHLOE GORDON.</p>
+		</div>
+		
+	{% else %}
+	<p>Start typing a friend's name to draw on:</p><br />
+	<fb:serverFbml width="650px" style="background: #000000"> 
+	<script type="text/fbml">
+	    <fb:fbml>
+		<div style="width:100%; min-height: 400px; background:#000000; text-align: center;">
+	    <form action="{{ base_url }}/friend_photo" method="get">
+			<input type="hidden" name="fs_{{ facebook_api_key }}" value="{{ fbs }}" />
+	    	<fb:friend-selector uid="{{ user.uid }}" name="user_name" idname="user_id" /><br />
+			<input type="submit" value="" style="width: 203px; height: 51px; background-image: url(http://lokho.com/drawonyou/flash/images/startbutton.gif); background-color: #000000; border:0px; margin-top: 5px;" />
+	    </form>
+		</div>
+	    </fb:fbml>
+	</script> 
+	</fb:serverFbml>
+	{% endif %}
+	
+{% endblock %}

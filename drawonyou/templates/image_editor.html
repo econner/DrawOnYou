@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% csrf_token %}
+<object width="685" height="700">
+	<param name="movie" value="Smiles.swf">
+	<embed src="{{ editor_url }}" FlashVars="fb_sig_user={{ user.uid }}&path_root=/user_media/uploads/&path_water=/user_media/images/&path_save=/upload_photo" width="685" height="700"></embed>
+</object>
+{% endblock %}

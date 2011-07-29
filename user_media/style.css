@@ -1,0 +1,122 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'lucida grande', Tahoma, Sans-serif;
+	font-size: 10pt;
+}
+#holder {
+	margin: 0px;
+	padding: 0px;
+	left: 0px;
+	top: 0px;
+	color: #FFFFFF;
+	background: #ffffff;
+	width: 750px;
+	float: left;
+	background-repeat: repeat-y;
+}
+.bgimage {
+	width:750px;
+}
+a {
+	color: #CCCCCC;
+	text-decoration: underline;
+}
+a:hover {
+	color: #39AE63;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #CCCCCC;
+	text-decoration: underline;
+}
+a:active {
+	color: #CCCCCC;
+	text-decoration: underline;
+}
+#spacer2 {
+	height: 1px;
+	width: 40px;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+#spacer3 {
+	float: left;
+	width: 5px;
+	height: 1px;
+	margin: 0px;
+	padding: 0px;
+	
+}
+#contentholder {
+	float: left;
+	margin-left: 0px;
+	padding: 10px;
+	width: 685px;
+	min-height: 400px;
+}
+#maincontent {
+	margin: 0px;
+	padding: 0px;
+}
+
+.input_row {
+  margin-left: 145px;
+  margin-top:  20px;
+}
+.buttons {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 145px;
+}
+
+.dh_titlebar {
+	visibility: hidden !important;	
+	width: 0px;
+	height: 0px;
+}
+p {
+	line-height: normal;
+	margin: 2px;
+	padding: 2px;
+}
+.clearfloat {
+	clear: both;
+}
+
+
+
+.UIPhotoGrid_PhotoLink .UIPhotoGrid_Image {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+border:0px;
+padding:0px;
+vertical-align:middle;
+text-decoration: none;
+}
+
+.UIPhotoGrid_TableCell {
+margin: 0px;
+padding:10px;
+text-align:center;
+vertical-align:middle;
+width:140px;
+}
+
+
+.pagerpro .current .pagerpro_a {
+	border-bottom:2px solid #12ae50;
+	border-color:#12ae50;
+	color:#12ae50;
+	background: none;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.pagerpro a:hover {
+	background: #FFFFFF; 
+}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+var offset = 0;
+/*
+* The facebook api returns a url with the top level domain, but the api
+* will error if you pass the full url so we need to strip out the TLD.
+*/
+function remove_base_url(photo_url)
+{
+	return photo_url.replace("https://graph.facebook.com", "");
+}
+
+/*
+* This function sets up click handlers for the "next" and "previous"
+* photo buttons.
+*/
+function reset_button_click_handler(button_id, photo_url, step)
+{
+    if(offset + step >= 0) {
+        $("#" + button_id).show();
+	    document.getElementById(button_id).onclick = function() {
+	        offset += step
+		    get_photo_page('' + remove_base_url(photo_url) + '');
+	    }
+    } else {
+        $("#" + button_id).hide();
+    }
+}
+
+/*
+* Since we load all the photos by ajax we need some display code in javascript.
+*/
+function get_photo_string(picture, source)
+{
+	return "<td><a href='/retrieve_photo?photo_url=" + source + "&fs_{{ facebook_api_key }}={{ fbs }}&friend_id={{ friend_id }}'>" +
+			"<img src='" + picture + "' />" +
+			"</a></td>";
+}
+
+function get_home_photos_page()
+{
+	get_photo_page("{{ photos_url }}");
+}
+
+/*
+* This function grabs the page of photos specified by photo_url and
+* sets up the next and previous buttons for each page.  If no photos come
+* back from the api then we don't have permissions to access general photos so we
+* only get the profile picture.
+*/
+function get_photo_page(photo_url)
+{
+	// TODO something useful if no photos left
+	if(!photo_url)
+		return;
+	
+	photo_url = remove_base_url(photo_url);
+	$("#photos").html("Loading...");
+	FB.api(photo_url + "?access_token={{ access_token }}&limit=25&offset=" + offset, function(response) {  
+		/*
+		* thumbnail in picture
+		* large photo in source
+		* paging in response.paging.next and response.paging.previous
+		*/
+		$("#photos").empty();
+		if(response.data != "") {
+			var curRow = "";
+			for(var i in response.data) {
+				if(i % 5 == 0) {
+					$("#photos").append("<tr>" + curRow + "</tr>");
+					curRow = "";
+				}
+				curRow += get_photo_string(response.data[i].picture, response.data[i].source);
+			}
+			// paging
+			reset_button_click_handler("next_button", photo_url, 25);
+			reset_button_click_handler("prev_button", photo_url, -25);	
+		} else {
+			// TODO get profile photo or something better if we can't find any photos
+			if(!direction) {
+				$("#photos").append("<p>Sorry! Your friend's permission settings don't allow us to access his or her photos! Please <a href='/'>go back</a> and try someone else.</p>");
+			} else {
+				$("#photos").append("<p>We could not find any more photos for your friend.  <a href=\"#\" onclick=\"get_home_photos_page();\">Go back...</a></p>");
+			}
+		}
+	});
+}
+
+// get the first page of photos via ajax
+$(function() {
+	get_home_photos_page();
+});
+</script>
+<p>Choose a photo to begin drawing:</p>
+<table id="photos">
+</table>
+<div style="float:left;">
+	<input type="button" id="prev_button" value="Previous" style="display:none;" />
+</div>
+<div style="float:right">
+	<input type="button" id="next_button" value="Next" style="display:none;" />
+</dov>
+
+{% endblock %}

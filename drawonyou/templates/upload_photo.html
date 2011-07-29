@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if error %}
+	<p>We're sorry.  An error occurred while trying to upload your photo.
+	Please <a href="{{ facebook_canvas_url }}">go back and try again</a>.</p>
+{% else %}
+	<img src="{{ finished_url }}{{ user.uid }}/{{ friend_id }}/{{ filename }}.jpg" /><br />
+	<p>Thank you!  Your photo was uploaded successfully.</p>
+{% endif %}
+
+{% endblock %}

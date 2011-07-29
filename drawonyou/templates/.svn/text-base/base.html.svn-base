@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="/user_media/style.css" type="text/css"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+</head>
+<body>
+	<div id="holder" style="background-image: url(/user_media/images/drawbg_02.png);">
+		<div id="headerspace"><img src="/user_media/images/drawbg_01.jpg" border="0" class="bgimage"/>
+	    </div>
+	    <div id="maincontent">
+	   	 <div id="spacer2"></div>
+		    <div id="contentholder">
+				{% load draw_tags %}
+				{% facebook_js %}
+	
+				{% block content %}
+
+				{% endblock %}
+			</div>
+			<div id="spacer3"></div> 
+			<div class="clearfloat"></div>
+		</div>
+	</div>
+</body>
+</html>

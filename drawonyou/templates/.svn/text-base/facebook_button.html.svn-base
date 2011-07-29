@@ -1,0 +1,2 @@
+<p style="margin: 15px; text-align: left">Grab a friend's Facebook photo and tag it with your own graffiti!  Give your friend a mustache, turn him or her into a nerd, or a pirate.  The possibilities are endless!  You're just a few clicks away from getting started drawing on your friends...</p>
+<fb:login-button perms="{{ facebook_extended_permissions }}">Login to DrawOnYou</fb:login-button><br /><br />
